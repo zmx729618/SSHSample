@@ -1,1 +1,1 @@
-#这是一个软件须知
+#this is a software 
