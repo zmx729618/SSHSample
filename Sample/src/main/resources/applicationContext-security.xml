@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                                 http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+<!-- 
+    <http auto-config="true" create-session="always" access-denied-page="/common/403.jsp"
+          use-expressions="true"  disable-url-rewriting="true">
+        
+        配置不要过滤的图片等静态资源，其中**代表可以跨越目录，*不可以跨越目录。
+        后面带一个*，因为请求页面的时候可能会带一些参数
+        <intercept-url pattern="/services*" filters="none"/>
+        <intercept-url pattern="/services/*" filters="none"/>
+        <intercept-url pattern="/static/**" filters="none"/> 不过滤图片等静态资源
+        <intercept-url pattern="/login.jsp*" filters="none"/> 登录页面不过滤
+        <intercept-url pattern="/install.jsp*" filters="none"/>  系统初始化配置不过滤
+        <intercept-url pattern="/auth/springSecurity/init" filters="none"/> 
+        <intercept-url pattern="/tc" filters="none"/>
+
+        配置登录页面  
+        <form-login login-page="/login.jsp" login-processing-url="/j_spring_security_check" 
+                    authentication-failure-url="/login.jsp?error=true" 
+                    default-target-url="/index" 
+                    always-use-default-target="true"
+                    authentication-success-handler-ref="authenticationSuccess" 
+                    authentication-failure-handler-ref="exceptionMappingAuthenticationFailureHandler"/>
+
+        "记住我"功能，采用持久化策略(将用户的登录信息存放cookie)  data-source-ref="dataSource" use-secure-cookie="true" true用在https上的              
+         <remember-me key="ifarm" use-secure-cookie="true" /> 记住我 采用cookie方式 单独用key就可以 第一次登录 访问login.jsp 记住密码 第二次登录直接访问主页index.jsp
+        
+        用户退出的跳转页面  
+        <logout invalidate-session="true" logout-url="/j_spring_security_logout" logout-success-url="/login.jsp"/>
+        
+        会话管理，设置最多登录异常，error-if-maximum-exceeded = false为第二次登录就会使前一个登录失效
+        <session-management invalid-session-url="/login.jsp?expired=true">
+            <concurrency-control max-sessions="10" error-if-maximum-exceeded="false" expired-url="/login.jsp?expired=true"/>
+        </session-management>
+        
+        添加自定义的过滤器 放在FILTER_SECURITY_INTERCEPTOR之前有效           
+        <custom-filter ref="customFilterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR" /> 
+        <custom-filter ref="switchUserProcessingFilter" after="FILTER_SECURITY_INTERCEPTOR"/> 
+        
+        <anonymous enabled="false" /> 
+    </http>
+    <beans:bean id="authenticationSuccess" class="org.nercita.ifarm.auth.service.MySavedRequestAwareAuthenticationSuccessHandler">
+         <beans:property name="defaultTargetUrl" value="/index"/>
+    </beans:bean>
+  
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="customUserDetailsService">
+            <password-encoder hash="md5" base64="true">
+                <salt-source user-property="username"/>
+            </password-encoder>
+        </authentication-provider>
+    </authentication-manager>
+   
+	<beans:bean id="exceptionMappingAuthenticationFailureHandler" class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+ 		<beans:property name="exceptionMappings">
+  			<beans:props>
+   	  			<beans:prop key="org.springframework.security.authentication.DisabledException">/login.jsp?role=false</beans:prop>
+      			<beans:prop key="org.springframework.security.authentication.BadCredentialsException">/login.jsp?error=true</beans:prop>
+  			</beans:props>
+ 		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="switchUserProcessingFilter" 
+			class="org.springframework.security.web.authentication.switchuser.SwitchUserFilter">
+ 			<beans:property name="userDetailsService"
+ 						ref="customUserDetailsService" />
+ 			<beans:property name="switchUserUrl" value="/j_spring_security_switch_user" />
+   		    <beans:property name="exitUserUrl" value="/j_spring_security_exit_user" />
+ 			<beans:property name="targetUrl" value="/index" />
+	</beans:bean> -->
+	
+</beans:beans>

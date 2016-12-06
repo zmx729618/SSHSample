@@ -1,0 +1,19 @@
+<sitemesh>
+    <!-- 排除不装饰的路径 -->
+    
+    <mapping path="/user/loginPage" exclue="true"/>
+    <mapping path="/kendo/grid" exclue="true"/>
+    <mapping path="/jqgrid" exclue="true"/>
+    <mapping path="/test/*" exclue="true"/>
+    <mapping path="/upload/*" exclue="true"/>
+    
+	<!-- 配置多个渲染器. 后面的装饰器将在前一个装饰器的基础上继续装饰,所以要注意装饰器的顺序 -->
+	<!-- 用户管理 -->
+    <mapping path="/user/registPage">
+		<decorator>/decorators/left/user.jsp</decorator>
+		<decorator>/decorators/main.jsp</decorator>
+	</mapping>
+   
+   
+  
+</sitemesh>

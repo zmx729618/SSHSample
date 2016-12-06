@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+ 
+
+    <!--spring集成Quartz任务调度 -->     
+    <bean id="testQuartzJob" class="org.nercita.bcp.quartz.TestQuartzJob"/>   	
+ 
+    <bean id="testQuartzJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="testQuartzJob" />
+		<property name="targetMethod" value="execute"/>
+		<property name="concurrent" value="false"/>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->  
+	</bean>
+	<bean id="testTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="testQuartzJobDetail"/> 
+        <!--<property name="cronExpression" value="*/30 * * * * ?"/> -->
+       	 <property name="cronExpression" value="0 0 23 * * ?"/>   
+	</bean>
+	<bean id="startQuartz" lazy-init="false" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="testTrigger"/>
+			</list>
+		</property>
+		<property name="autoStartup" value="true"/>
+	</bean>
+
+
+</beans>
